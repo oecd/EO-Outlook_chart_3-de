@@ -19,25 +19,25 @@
     </head>
 
     <body>
-        <h1>2020 Projected change in GDP</h1>
+        <h1>Projiziertes BIP-Wachstum 2020</h1>
         <img id="Share" src="img/share.svg" alt="share">
 
     <div class="flex-container" id="Downloadbanner">
         <button class="toData active" id="G7btn" value="G7" onclick="drawChart(value)">G7</button>
         <button class="toData" id="OECDbtn" onclick="drawChart(value)" value="OECD">OECD</button>
-        <button class="toData" id="WORLDbtn" onclick="drawChart(value)" value="WORLD">World</button>
+        <button class="toData" id="WORLDbtn" onclick="drawChart(value)" value="WORLD">Welt</button>
     </div>
         <div id="GDPchart"></div>
-        <div id="source" class="source">Source: <a class="source" href="https://data.oecd.org/gdp/real-gdp-forecast.htm" target="_blank">Real GDP forecast (indicator)</a>. © OECD <a class="source" href="http://www.oecd.org/termsandconditions" target="_blank">Terms & Conditions</a></div>
+        <div id="source" class="source">Quelle: <a class="source" href="https://data.oecd.org/gdp/real-gdp-forecast.htm" target="_blank">Real GDP forecast (indicator)</a>. © OECD <a class="source" href="http://www.oecd.org/termsandconditions" target="_blank">Terms & Conditions</a></div>
         <div id="shareLink">
             <div id="shutterholdertracker">
                 <img id="shuttershare" src="img/cross.svg">
                 <div id="trackersText">
                     <b>Copy link:</b><Br />
-                    <span>https://oecd.github.io/EO-Outlook_chart_3/</span><Br />
+                    <span>https://oecd.github.io/EO-Outlook_chart_3-de/</span><Br />
                     <b>Embed link:</b><Br />
                     <textarea
-                        readonly><iframe src="https://oecd.github.io/EO-Outlook_chart_3/" width="100%" height="500px" style="border:none;"></iframe></textarea>
+                        readonly><iframe src="https://oecd.github.io/EO-Outlook_chart_3-de/" width="100%" height="500px" style="border:none;"></iframe></textarea>
         
                 </div>
             </div>
@@ -61,7 +61,7 @@
         .range([ "#E73741", "#851017"])
 
   
-    var margin = { top: 120, right: 50, bottom: 30, left: 50 };
+    var margin = { top: 160, right: 50, bottom: 30, left: 50 };
 
     var mapRatio = 7 / 20;
 
@@ -69,9 +69,9 @@
 
     var height;
     if (width > 650)
-        height=360//height = width * mapRatio;
+        height=320//height = width * mapRatio;
     else
-        height = 360//height = width;
+        height = 320//height = width;
 
 
     var urls = {
@@ -143,7 +143,7 @@
 
     function drawChart(value){
         GDPsvg.selectAll("*").remove();
-console.log(value)
+        
 
         valueButton = value;
         var data=[];
@@ -173,9 +173,9 @@ console.log(value)
          width = document.getElementById("GDPchart").offsetWidth - margin.left - margin.right;
 
         if (width > 650)
-            height = 360//height = width * mapRatio;
+            height = 320//height = width * mapRatio;
         else
-            height = 360//height = width;
+            height = 320//height = width;
 
         
         d3.selectAll("svg")
@@ -267,7 +267,7 @@ console.log(value)
                     .duration(100)
                     .style("opacity", 1);
 
-                var htmlText =  "<b>" + d.data.Country + "</b><br/>&nbsp;Single-hit scenario: <b>" + Math.round(d.data.scenario1 * 10) / 10 + "%</b> (change compared to previous period)<br>&nbsp;Double-hit scenario :<b>" + Math.round(d.data.scenario2 * 10) / 10 + "%</b>  (change compared to previous period)"
+                var htmlText =  "<b>" + d.data.Country + "</b><br/>&nbsp;Single-Hit-Szenario: <b>" + Math.round(d.data.scenario1 * 10) / 10 + "%</b> (Veränderung gegenüber Vorzeitraum)<br>&nbsp;Double-Hit-Szenario: <b>" + Math.round(d.data.scenario2 * 10) / 10 + "%</b>  (Veränderung gegenüber Vorzeitraum)"
 
                 if (event.pageX < width - 75) {
                     divMap.html(htmlText)
@@ -303,9 +303,9 @@ console.log(value)
             .attr("dy", "0.32em")
             .text(function (d) { 
                 if (d=="scenario1")
-                    return "Single-hit scenario";
+                    return "Single-Hit-Szenario";
                 else
-                    return "Additional decline in double-hit scenario"});
+                    return "Zusätzlicher Effekt im Double-Hit-Szenario"});
     }
 
         d3.select("#Share").on("click", function () {
